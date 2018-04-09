@@ -29,7 +29,6 @@
 			
 			struct appdata_t {
 				float4 position:POSITION;
-				fixed4 tangent:TANGENT;
 				fixed4 color:COLOR;
 				float2 texcoord0:TEXCOORD0;
 				float2 texcoord1:TEXCOORD1;
@@ -54,16 +53,14 @@
 				float scale=rsqrt(dot(pixelSize,pixelSize))*abs(input.texcoord1.y)*4.5;
 				float bias=(0.5-input.texcoord1.x*0.125)*scale-0.5;
 				
-				fixed4 faceColor=input.color;
-				faceColor.rgb*=faceColor.a;
-				
+				fixed4 channel=saturate(ceil(input.color-0.5));
+				fixed4 faceColor=saturate((channel*0.51-input.color)/-0.49);
 				fixed4 outlineColor=_OutlineColor;
 				outlineColor.a*=faceColor.a;
-				outlineColor.rgb*=outlineColor.a;
 				
 				v2f output={
 					UnityObjectToClipPos(input.position),
-					input.tangent,
+					channel,
 					faceColor,
 					outlineColor,
 					input.texcoord0,

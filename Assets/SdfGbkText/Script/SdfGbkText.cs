@@ -53,8 +53,9 @@ public class SdfGbkText:Text{
 		}
 	}
 	
+	private static Color channelColor=new Color(0.49f,0.49f,0.49f,0.49f);
 	private static Color[] channelColors=new Color[]{
-		new Color(1,0,0,0),new Color(0,1,0,0),new Color(0,0,1,0),new Color(0,0,0,1)
+		new Color(0.51f,0,0,0),new Color(0,0.51f,0,0),new Color(0,0,0.51f,0),new Color(0,0,0,0.51f)
 	};
 	
 	private static char[] channelRanges=new char[]{
@@ -109,7 +110,6 @@ public class SdfGbkText:Text{
 				break;
 			}
 		}
-		tempVerts[index].tangent=channelColors[channel];
 		tempVerts[index].position*=unitsPerPixel;
 		tempVerts[index].uv1.x=fontWeight;
 		tempVerts[index].uv1.y=fontScale;
@@ -121,5 +121,6 @@ public class SdfGbkText:Text{
 				tempVerts[index].color*=m_GradientBottomColor;
 			}
 		}
+		tempVerts[index].color=tempVerts[index].color*channelColor+channelColors[channel];
 	}
 }
