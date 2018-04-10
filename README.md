@@ -3,9 +3,11 @@
 2. 使用四通道存储，2048的贴图支持所有GBK的21886个字
 3. 支持描边和渐变，描边通过材质设置，渐变和修改字体粗细用脚本
 4. 字号20号以上看的比较清楚，小号字需要加描边才能看
-### 和Text对比
-![Alt text](./Snapshots/compare.png)
-### 设置渐变
-![Alt text](./Snapshots/gradient.png)
 ### 设置描边
 ![Alt text](./Snapshots/outline.png)
+### 设置阴影
+![Alt text](./Snapshots/shadow.png)
+### 设置粗细
+![Alt text](./Snapshots/bold.png)
+### 设置渐变
+![Alt text](./Snapshots/gradient.png)
