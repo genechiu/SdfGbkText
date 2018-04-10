@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+[AddComponentMenu("UI/SdfGbkText")]
 public class SdfGbkText:Text{
 	[SerializeField]
 	[Range(0.0f,1.0f)]

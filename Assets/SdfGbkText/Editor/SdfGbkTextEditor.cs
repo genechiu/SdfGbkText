@@ -1,10 +1,9 @@
-﻿using System.CodeDom;
-using UnityEngine;
+﻿using UnityEngine;
+using UnityEngine.UI;
 using UnityEditor;
 using System.Threading;
 using System.Collections.Generic;
 using System.IO;
-using System.Runtime.InteropServices;
 
 [CanEditMultipleObjects]
 [CustomEditor(typeof(SdfGbkText),true)]
@@ -336,9 +335,25 @@ public class SdfGbkTextEditor:UnityEditor.UI.TextEditor {
 	}
 	
 	[MenuItem("GameObject/UI/SdfGbkText")]
-	static void Create(){
+	static void Create(MenuCommand menuCommand){
+		var parent=Selection.activeTransform;
+		if(parent==null){
+			Canvas canvas=GameObject.FindObjectOfType<Canvas>();
+			if(canvas!=null){
+				parent=canvas.transform;
+			}
+			else{
+				canvas=new GameObject("Canvas").AddComponent<Canvas>();
+				canvas.gameObject.AddComponent<CanvasScaler>();
+				canvas.gameObject.AddComponent<GraphicRaycaster>();
+				canvas.gameObject.layer=LayerMask.NameToLayer("UI");
+				canvas.renderMode=RenderMode.ScreenSpaceOverlay;
+				parent=canvas.transform;
+			}
+		}
 		var gameObject=new GameObject("SdfGbkText");
-		gameObject.transform.SetParent(Selection.activeTransform,false);
+		gameObject.layer=LayerMask.NameToLayer("UI");
+		gameObject.transform.SetParent(parent,false);
 		gameObject.AddComponent<SdfGbkText>();
 		Selection.activeGameObject=gameObject;
 	}
@@ -357,12 +372,12 @@ public class SdfGbkTextEditor:UnityEditor.UI.TextEditor {
 	}
 	
 	public override void OnInspectorGUI(){
+		base.OnInspectorGUI();
 		this.serializedObject.Update();
 		EditorGUILayout.PropertyField(this.m_FontWeight);
 		EditorGUILayout.PropertyField(this.m_GradientEnalbed);
 		EditorGUILayout.PropertyField(this.m_GradientTopColor);
 		EditorGUILayout.PropertyField(this.m_GradientBottomColor);
 		this.serializedObject.ApplyModifiedProperties();
-		base.OnInspectorGUI();
 	}
 }
