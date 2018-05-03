@@ -4,10 +4,10 @@
 3. 支持描边和渐变，描边通过材质设置，渐变和修改字体粗细用脚本
 4. 字号20号以上看的比较清楚，小号字需要加描边才能看
 ### 设置描边
-![Alt text](./Snapshots/outline.png)
+![Snapshot](https://github.com/genechiu/SdfGbkText/tree/master/Snapshots/outline.png)
 ### 设置阴影
-![Alt text](./Snapshots/shadow.png)
+![Snapshot](https://github.com/genechiu/SdfGbkText/tree/master/Snapshots/shadow.png)
 ### 设置粗细
-![Alt text](./Snapshots/bold.png)
+![Snapshot](https://github.com/genechiu/SdfGbkText/tree/master/Snapshots/bold.png)
 ### 设置渐变
-![Alt text](./Snapshots/gradient.png)
+![Snapshot](https://github.com/genechiu/SdfGbkText/tree/master/Snapshots/gradient.png)
